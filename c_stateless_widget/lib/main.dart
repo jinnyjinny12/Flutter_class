@@ -1,3 +1,4 @@
+import 'package:c_stateless_widget/01_basic_widget/00_Combination.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,10 +10,15 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      title: "basic Widget Example",
       home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: Text("basic widget")
+        ),
+        body: const Center(
+          child: Combination(),
         ),
       ),
     );
