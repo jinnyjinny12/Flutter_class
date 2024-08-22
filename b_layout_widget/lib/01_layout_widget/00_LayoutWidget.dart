@@ -1,5 +1,14 @@
+
+import 'package:b_layout_widget/01_layout_widget/04_StackWidget.dart';
+import 'package:b_layout_widget/01_layout_widget/05_ListViewWidget.dart';
+import 'package:b_layout_widget/01_layout_widget/06_WrapWidget.dart';
+import 'package:b_layout_widget/01_layout_widget/07_PaddingWidget.dart';
+import 'package:b_layout_widget/01_layout_widget/08_AlignContainer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:b_layout_widget/01_layout_widget/01_MediaQueryWidget.dart';
+import 'package:b_layout_widget/01_layout_widget/02_SizedBoxWidget.dart';
+import 'package:b_layout_widget/01_layout_widget/03_RowWidget.dart';
 
 class LayoutCombination extends StatelessWidget{
 
@@ -31,8 +40,17 @@ class LayoutCombination extends StatelessWidget{
           color: Colors.blue,
           child: Column(
             children: [
+              const Text("Container 위젯"),
+              const MediaQueryWidget(),
+              const SizedBoxWidget(),
+              const RowWidget(),
+              StackWidget(),
+              ListViewWidget(),
+              DynamicListView(),
+              const WrapWidget(),
+              PaddingWidget(size: 10.0),
+              AlignContainer()
 
-              const Text("Container 위젯")
 
             ],
 
