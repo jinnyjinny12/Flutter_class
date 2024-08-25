@@ -33,6 +33,7 @@ class _HomeViewState extends State<HomeView>{
 
   final PageController _pageController = PageController();
 
+
   void _onLikeChanged(int index) {
     setState(() {
       if (_likedItems.contains(index)) {

@@ -40,6 +40,7 @@ class _DynamicListViewState extends State<DynamicListView> {
     }
   }
 
+
   void _toggleLike(int index) {
     setState(() {
       if (widget.likedItems.contains(index)) {
@@ -99,7 +100,7 @@ class _DynamicListViewState extends State<DynamicListView> {
                   children: [
                     LikeButton(
                       isLiked: isLiked,
-                      onLikeChanged: () => widget.onLikeChanged(index),
+                      onLikeChanged: () => _toggleLike(index),
                     ),
                     DeleteButton(
                       onDelete: () {
