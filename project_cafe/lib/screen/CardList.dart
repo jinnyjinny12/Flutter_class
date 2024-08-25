@@ -3,33 +3,31 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project_cafe/component/Button.dart';
 
+import '../component/Card.dart';
+
 
 class DynamicListView extends StatefulWidget {
-  final List<String> items;
+  final List<Item> items;
   final ValueChanged<int> onLikeChanged;
   final List<int> likedItems;
 
 
-  DynamicListView({super.key,
+  DynamicListView({
+    super.key,
     required this.items,
     required this.onLikeChanged,
-    required this.likedItems});
+    required this.likedItems,
+  });
 
   @override
   _DynamicListViewState createState() => _DynamicListViewState();
 
 }
 
-
 class _DynamicListViewState extends State<DynamicListView> {
-
-  List<String> items = List.generate(10, (index) => "아이템 $index");
-
-
 
 
   // 삭제함수 -> 작동안함.
-
   void _deleteItem(int index) {
     if (index >= 0 && index < widget.items.length) {
       setState(() {
@@ -57,61 +55,67 @@ class _DynamicListViewState extends State<DynamicListView> {
 
   @override
   Widget build(BuildContext context) {
+
     return ListView.builder(
-        scrollDirection: Axis.vertical,
-        itemCount: items.length,
-        itemBuilder: (context, index) {
-          final isLiked = widget.likedItems.contains(index);
+      scrollDirection: Axis.vertical,
+      itemCount: widget.items.length,
+      itemBuilder: (context, index) {
+        final item = widget.items[index];
+        final isLiked = widget.likedItems.contains(index);
 
-          return Card(
-              child: Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Row(
-                  children: [
-                    // 숫자
-                    Text("${index + 1}", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                    SizedBox(width: 16.0),
-                    Image(
-                          image: AssetImage("asset/아인슈페너.jpg"),
-                          width: 60,
-                          height: 60,
-                          fit: BoxFit.cover,
-                    ),
-                    SizedBox(width: 16),
+        return Card(
+          child: Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Row(
+              children: [
+                Text(
+                  "${index + 1}",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
 
-                    Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "제목 ${index + 1} blackCoffee",
-                              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                            SizedBox(height: 8),
-                            Text('이곳은 아이템 ${index + 1}의 내용. 여기다 더 많은 커피정보 추가할거임!'),
-                          ],
-                        )
-
-                    ),
-                  Row(
+                SizedBox(width: 16.0),
+                Image(
+                  image: AssetImage(item.imageUrl),
+                  width: 60,
+                  height: 60,
+                  fit: BoxFit.cover,
+                ),
+                SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      LikeButton(
-                        isLiked: isLiked,
-                        onLikeChanged: () => widget.onLikeChanged(index),
-                      ), // 좋아요
-                      DeleteButton(
-                        onDelete: () {
-                          _deleteItem(index);
-                        },
-                      )
+                      Text(
+                        item.title,
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 8),
+                      Text(item.description),
                     ],
-                  )
+                  ),
+                ),
 
+                Row(
+                  children: [
+                    LikeButton(
+                      isLiked: isLiked,
+                      onLikeChanged: () => widget.onLikeChanged(index),
+                    ),
+                    DeleteButton(
+                      onDelete: () {
+                        _deleteItem(index);
+                      },
+                    )
                   ],
                 ),
-              ));
-        },
-      );
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 }
+
+
 

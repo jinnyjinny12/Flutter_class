@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:project_cafe/screen/CardList.dart';
 import 'package:project_cafe/screen/FavoriteView.dart';
 
+import '../component/Card.dart';
+
 
 
 // App Bar
@@ -19,7 +21,14 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView>{
   int _currentIndex = 0;
-  List<String> _items = List.generate(10, (index) => "아이템 $index");
+
+
+  List<Item> _items = List.generate(10, (index) => Item(
+    title: "제목 $index",
+    description: "이것은 아이템 $index의 설명입니다.",
+    imageUrl: "asset/아인슈페너.jpg", // 이미지 경로를 알맞게 설정하세요
+  ));
+
   List<int> _likedItems = [];
 
   final PageController _pageController = PageController();

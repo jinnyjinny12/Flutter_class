@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../component/Card.dart';
+
 class FavoriteView extends StatelessWidget {
   final List<int> likedItems;
-  final List<String> items;
+  final List<Item> items;
 
-
-  // 생성자 정의에서 const를 제거하고 괄호와 콜론을 정확하게 기입
   FavoriteView({
     Key? key,
     required this.likedItems,
@@ -24,13 +24,17 @@ class FavoriteView extends StatelessWidget {
         itemCount: likedItemsList.length,
         itemBuilder: (context, index) {
           final item = likedItemsList[index];
-          return ListTile(
-            title: Text(item),
+          return Card(
+            child: ListTile(
+              leading: Image.asset(item.imageUrl, width: 60, height: 60, fit: BoxFit.cover),
+              title: Text(item.title),
+              subtitle: Text(item.description),
+            ),
           );
         },
       ),
     );
   }
-
 }
+
 
