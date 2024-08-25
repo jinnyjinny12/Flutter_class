@@ -1,7 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:project_cafe/screen/Button.dart';
+import 'package:project_cafe/component/Button.dart';
 
 
 class DynamicListView extends StatefulWidget {
@@ -26,18 +26,20 @@ class _DynamicListViewState extends State<DynamicListView> {
   List<String> items = List.generate(10, (index) => "아이템 $index");
 
 
-  // 삭제함수
+
+
+  // 삭제함수 -> 작동안함.
 
   void _deleteItem(int index) {
-    if( index >=0 && index < items.length ){
+    if (index >= 0 && index < widget.items.length) {
       setState(() {
         widget.items.removeAt(index);
         widget.likedItems.remove(index);
+        widget.likedItems.removeWhere((likedIndex) => likedIndex >= widget.items.length);
       });
-    }else {
+    } else {
       print("Index $index is out of range");
     }
-  
   }
 
   void _toggleLike(int index) {
