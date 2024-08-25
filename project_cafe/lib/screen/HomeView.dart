@@ -56,7 +56,9 @@ class _HomeViewState extends State<HomeView>{
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue,
-          title: Text("Coffe Cards")
+          title: Text(_currentIndex == 0 ? "Coffee Cards" : "Favorite Items"),
+
+
         ),
         body: PageView(
           controller: _pageController,

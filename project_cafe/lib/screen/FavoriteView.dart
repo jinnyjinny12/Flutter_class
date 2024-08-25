@@ -16,11 +16,7 @@ class FavoriteView extends StatelessWidget {
   Widget build(BuildContext context) {
     final likedItemsList = likedItems.map((index) => items[index]).toList();
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Favorite Items"),
-      ),
-      body: ListView.builder(
+    return  ListView.builder(
         itemCount: likedItemsList.length,
         itemBuilder: (context, index) {
           final item = likedItemsList[index];
@@ -32,8 +28,8 @@ class FavoriteView extends StatelessWidget {
             ),
           );
         },
-      ),
-    );
+      );
+
   }
 }
 
