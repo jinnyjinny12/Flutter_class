@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:project_cafe/screen/CardList.dart';
+import 'package:project_cafe/screen/MenuList.dart';
 import 'package:project_cafe/screen/FavoriteView.dart';
 
 import '../component/Card.dart';
@@ -29,17 +29,19 @@ class _HomeViewState extends State<HomeView>{
     imageUrl: "asset/아인슈페너.jpg", // 이미지 경로를 알맞게 설정하세요
   ));
 
-  List<int> _likedItems = [];
+  List<Item> _likedItems = [];
 
   final PageController _pageController = PageController();
 
 
   void _onLikeChanged(int index) {
+    final item = _items[index];
+
     setState(() {
-      if (_likedItems.contains(index)) {
-        _likedItems.remove(index);
+      if (_likedItems.contains(item)) {
+        _likedItems.remove(item);
       } else {
-        _likedItems.add(index);
+        _likedItems.add(item);
       }
     });
   }
@@ -55,12 +57,6 @@ class _HomeViewState extends State<HomeView>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.blue,
-          title: Text(_currentIndex == 0 ? "Coffee Cards" : "Favorite Items"),
-
-
-        ),
         body: PageView(
           controller: _pageController,
           onPageChanged: (index){
@@ -69,7 +65,7 @@ class _HomeViewState extends State<HomeView>{
             });
           },
           children: [
-            DynamicListView(
+            MenuListView(
                 items: _items,
                 likedItems: _likedItems,
                 onLikeChanged: _onLikeChanged,
@@ -77,7 +73,7 @@ class _HomeViewState extends State<HomeView>{
             ),
             FavoriteView(
                 likedItems: _likedItems,
-                items: _items
+
             )
           ],
         ),

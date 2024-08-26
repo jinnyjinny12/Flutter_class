@@ -3,23 +3,26 @@ import 'package:flutter/material.dart';
 import '../component/Card.dart';
 
 class FavoriteView extends StatelessWidget {
-  final List<int> likedItems;
-  final List<Item> items;
+  final List<Item> likedItems;
+
 
   FavoriteView({
     Key? key,
-    required this.likedItems,
-    required this.items,
+    required this.likedItems
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final likedItemsList = likedItems.map((index) => items[index]).toList();
 
-    return  ListView.builder(
-        itemCount: likedItemsList.length,
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        title: Text("Favorite Items")
+      ),
+      body: ListView.builder(
+        itemCount: likedItems.length,
         itemBuilder: (context, index) {
-          final item = likedItemsList[index];
+          final item = likedItems[index];
           return Card(
             child: ListTile(
               leading: Image.asset(item.imageUrl, width: 60, height: 60, fit: BoxFit.cover),
@@ -28,7 +31,9 @@ class FavoriteView extends StatelessWidget {
             ),
           );
         },
-      );
+      ),
+    );
+
 
   }
 }
