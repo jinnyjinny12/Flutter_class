@@ -13,6 +13,7 @@ class FirstScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+
           const Text("첫 번째 페이지입니다."),
           ElevatedButton(onPressed: (){
             Navigator.pushNamed(context, "/second");
