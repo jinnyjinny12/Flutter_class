@@ -16,7 +16,11 @@ class FirstScreen extends StatelessWidget {
           const Text("첫 번째 페이지입니다."),
           ElevatedButton(onPressed: (){
             Navigator.pushNamed(context, "/second");
-          }, child: const Text("페이지 이동")) // 페이지 이동을 누르면 second 로 이동
+          }, child: const Text("페이지 이동")) , // 페이지 이동을 누르면 second 로 이동
+
+          ElevatedButton(onPressed: (){
+            Navigator.pushNamed(context, "/bottom");
+          }, child: Text("bottom 이동"))
         ],
       ),
     ) );
