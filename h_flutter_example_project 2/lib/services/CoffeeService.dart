@@ -6,16 +6,16 @@ import 'package:hive/hive.dart';
 import 'package:h_flutter_example_project/models/CoffeeItem.dart';
 import 'package:http/http.dart' as http;
 
-class Coffeeserivce{
+class CoffeeService{
   Box<CoffeeItem>? _coffeeBox;
 
-  Future<void> initailizeHive() async {
+  Future<void> initializeHive() async {
     _coffeeBox = await Hive.openBox<CoffeeItem>("coffee Box");
-    await fetchCoffeItems();
+    await fetchCoffeeItems();
 
   }
 
-  Future<List<CoffeeItem>> fetchCoffeItems() async{
+  Future<List<CoffeeItem>> fetchCoffeeItems() async{
 
     if(_coffeeBox!.isNotEmpty){
       // cpffeebox 의 데이터를 list 형식으로 반환함.
@@ -48,6 +48,13 @@ class Coffeeserivce{
 
     }
 
+  }
+  Future<void> deleteCoffeeItem(int index) async {
+    await _coffeeBox?.deleteAt(index);
+  }
+
+  Future<void> addCoffeeItem(CoffeeItem coffeeItem) async{
+    await _coffeeBox?.add(coffeeItem);
   }
 
 

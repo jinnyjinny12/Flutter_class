@@ -1,15 +1,14 @@
 
 
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:h_flutter_example_project/models/CoffeeItem.dart';
 
-class CoffeeDetialscreen extends StatelessWidget {
+class CoffeeDetailScreen extends StatelessWidget {
 
   final CoffeeItem coffeeItem;
 
-  CoffeeDetialscreen({required this.coffeeItem, super.key});
+  CoffeeDetailScreen({required this.coffeeItem, super.key});
 
 
   @override
@@ -21,7 +20,7 @@ class CoffeeDetialscreen extends StatelessWidget {
       body:  Center(
         child: Text(''),
       ),
-    )
+    );
 
   }
 }
