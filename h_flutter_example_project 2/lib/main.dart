@@ -45,7 +45,7 @@ Future<void> main() async {
     MultiProvider(
         providers: [
           ChangeNotifierProvider(
-              create:(context) => CoffeeViewModel(Coffeeserivce())
+              create:(context) => CoffeeViewModel(CoffeeService())
           ),
           ChangeNotifierProvider(
               create:(context) => FavoriteViewModel(FavoriteService())
@@ -72,7 +72,7 @@ class MainApp extends StatelessWidget{
     darkTheme: CafeAppTheme.darkTheme, // 다크모드 설정시, 다크모드 서정을 따라가겠다
     initialRoute: "/", // 어플리케이션의 기본경로이다.
     routes: {
-      "/" : (context) => Layout() // / 경로 요청이 들어오면 레이아웃을 그려준다.
+      "/" : (context) => Layout() // /  경로 요청이 들어오면 레이아웃을 그려준다.
     },
   );
 

@@ -19,8 +19,6 @@ class AddCoffeeScreen extends StatelessWidget {
             child: Center(
                 child: Column(
                   children: [
-                    CameraWidget(imagePath: viewModel.coffeeItem?.image,
-                        setMethod: viewModel.setImage),
                     FormWidget(value: viewModel.coffeeItem?.title ?? "",
                         setValue: viewModel.setTitle),
                     FormWidget(value: viewModel.coffeeItem?.description ?? "",
