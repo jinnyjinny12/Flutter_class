@@ -10,10 +10,11 @@ class LikeButton extends StatefulWidget {
   LikeButton({super.key, required this.isLiked, required this.onLikeChanged});
 
   @override
-  _LikeButtonSate createState() => _LikeButtonSate();
+  _LikeButtonState createState() => _LikeButtonState();
 }
 
-class _LikeButtonSate extends State<LikeButton> {
+class _LikeButtonState extends State<LikeButton> {
+
 
 
   @override

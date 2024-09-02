@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:h_flutter_example_project/controllers/CoffeeViewModel.dart';
-import 'package:h_flutter_example_project/widgets/CameraWidget.dart';
 import 'package:h_flutter_example_project/widgets/FormWidget.dart';
 import 'package:provider/provider.dart';
 // flutter pub add camera

@@ -1,16 +1,12 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project_cafe/component/Button.dart';
-
 import '../component/Card.dart';
-
 
 class MenuListView extends StatefulWidget {
   final List<Item> items;
   final ValueChanged<int> onLikeChanged;
   final List<Item> likedItems;
-
 
   MenuListView({
     super.key,
@@ -20,21 +16,15 @@ class MenuListView extends StatefulWidget {
   });
 
   @override
-  _DynamicListViewState createState() => _DynamicListViewState();
-
+  _MenuListViewState createState() => _MenuListViewState();
 }
 
-class _DynamicListViewState extends State<MenuListView> {
-
-  // 삭제함수 -> 작동안함.
+class _MenuListViewState extends State<MenuListView> {
   void _deleteItem(int index) {
     if (index >= 0 && index < widget.items.length) {
       setState(() {
-        // 삭제할 아이템을 먼저 가져옵니다.
         final itemToDelete = widget.items[index];
-        // items 리스트에서 아이템을 삭제합니다.
         widget.items.removeAt(index);
-        // likedItems 리스트에서 해당 아이템을 삭제합니다.
         widget.likedItems.remove(itemToDelete);
       });
     } else {
@@ -42,21 +32,8 @@ class _DynamicListViewState extends State<MenuListView> {
     }
   }
 
-  void _toggleLike(int index) {
-    setState(() {
-      final item = widget.items[index];
-
-      if (widget.likedItems.contains(item)) {
-        widget.likedItems.remove(item);
-      } else {
-        widget.likedItems.add(item);
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
@@ -67,7 +44,7 @@ class _DynamicListViewState extends State<MenuListView> {
         itemCount: widget.items.length,
         itemBuilder: (context, index) {
           final item = widget.items[index];
-          final isLiked = widget.likedItems.contains(index);
+          final isLiked = widget.likedItems.contains(item);
 
           return Card(
             child: Padding(
@@ -78,7 +55,6 @@ class _DynamicListViewState extends State<MenuListView> {
                     "${index + 1}",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-
                   SizedBox(width: 16.0),
                   Image(
                     image: AssetImage(item.imageUrl),
@@ -100,18 +76,15 @@ class _DynamicListViewState extends State<MenuListView> {
                       ],
                     ),
                   ),
-
                   Row(
                     children: [
                       LikeButton(
                         isLiked: isLiked,
-                        onLikeChanged: () => _toggleLike(index),
+                        onLikeChanged: () => widget.onLikeChanged(index),
                       ),
                       DeleteButton(
-                        onDelete: () {
-                          _deleteItem(index);
-                        },
-                      )
+                        onDelete: () => _deleteItem(index),
+                      ),
                     ],
                   ),
                 ],
@@ -119,11 +92,7 @@ class _DynamicListViewState extends State<MenuListView> {
             ),
           );
         },
-      )
+      ),
     );
-
   }
 }
-
-
-

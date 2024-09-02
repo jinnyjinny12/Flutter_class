@@ -22,7 +22,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView>{
   int _currentIndex = 0;
 
-
+  // 메뉴 정보를 받아오는 것
   List<Item> _items = List.generate(10, (index) => Item(
     title: "제목 $index",
     description: "이것은 아이템 $index의 설명입니다.",
