@@ -18,5 +18,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - asset/5doong2.png
     - asset/아인슈페너.jpg
+    - asset/cake1.png
+    - asset/차.png

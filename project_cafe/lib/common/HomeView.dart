@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:project_cafe/screen/MenuList.dart';
 import 'package:project_cafe/screen/FavoriteView.dart';
 
-import '../component/Card.dart';
+import '../model/Card.dart';
 
 
 
@@ -22,12 +22,17 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView>{
   int _currentIndex = 0;
 
-  // 메뉴 정보를 받아오는 것
-  List<Item> _items = List.generate(10, (index) => Item(
-    title: "제목 $index",
-    description: "이것은 아이템 $index의 설명입니다.",
-    imageUrl: "asset/아인슈페너.jpg", // 이미지 경로를 알맞게 설정하세요
-  ));
+  // // 메뉴 정보를 받아오는 것
+  // List<Item> _items = List.generate(10, (index) => Item(
+  //   title: "제목 $index",
+  //   description: "이것은 아이템 $index의 설명입니다.",
+  //   imageUrl: "asset/아인슈페너.jpg", // 이미지 경로를 알맞게 설정하세요
+  // ));
+
+  // 가상데이터를 리스트에 담음
+
+  List<Item> _items = generateSampleItems(); // 데이터를 따로 받아온다
+
 
   List<Item> _likedItems = [];
 

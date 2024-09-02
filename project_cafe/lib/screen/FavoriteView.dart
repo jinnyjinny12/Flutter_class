@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../component/Card.dart';
+import '../model/Card.dart';
 
 class FavoriteView extends StatelessWidget {
   final List<Item> likedItems;

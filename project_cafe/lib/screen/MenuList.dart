@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project_cafe/component/Button.dart';
-import '../component/Card.dart';
+import '../model/Card.dart';
 
 class MenuListView extends StatefulWidget {
   final List<Item> items;
